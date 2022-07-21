@@ -94,7 +94,7 @@ npm install nightwatch-UI-atrributes-validator
 
 ### Usage
 To use the above, we simply need to use the custom command `validateBaseline` and it accepts 1 parameter.
-1. fileName of the baseline
+1. `fileName` of the baseline
 
 ```test.js
 describe('Verify the UI attributes of homepage', function() {
