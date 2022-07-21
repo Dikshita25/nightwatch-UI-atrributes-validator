@@ -1,0 +1,29 @@
+{
+  "name": "nightwatch-ui-atrributes-validator",
+  "version": "1.0.0",
+  "description": "This package allows you to validate the UI attributes against baseline using NightwatchJS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dikshita25/nightwatch-UI-atrributes-validator.git"
+  },
+  "keywords": [
+    "UI",
+    "NightwatchJS",
+    "Tests",
+    "Automation",
+    "CucumberJS",
+    "UI testing",
+    "Nightwatch-v2"
+  ],
+  "author": "Dikshita Shirodkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dikshita25/nightwatch-UI-atrributes-validator/issues"
+  },
+  "homepage": "https://github.com/Dikshita25/nightwatch-UI-atrributes-validator#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "nightwatch": "^2.3.0",
+    "path": "^0.12.7"
+  }
+}
