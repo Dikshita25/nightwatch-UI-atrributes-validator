@@ -1,6 +1,6 @@
 {
-  "name": "nightwatch-ui-atrributes-validator",
-  "version": "1.0.0",
+  "name": "nightwatch-ui-attributes-validator",
+  "version": "1.0.1",
   "description": "This package allows you to validate the UI attributes against baseline using NightwatchJS.",
   "repository": {
     "type": "git",
