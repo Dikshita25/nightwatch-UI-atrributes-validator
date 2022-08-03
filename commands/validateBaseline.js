@@ -37,9 +37,11 @@ module.exports = class ValidateBaseline {
       }
       return {};
     }, [elementConfig], (result) => {
-      Object.keys(elementConfig.attributes).forEach((attributeKey) => {
-        this.api.verify.equal(result.value[attributeKey], elementConfig.attributes[attributeKey], `Matching ${attributeKey} to be ${elementConfig.attributes[attributeKey]} for ${elementConfig.text}`);
-      })
+        it(elementConfig.text, () => {
+          Object.keys(elementConfig.attributes).forEach((attributeKey) => {
+            this.api.verify.equal(result.value[attributeKey], elementConfig.attributes[attributeKey], `Matching ${attributeKey} to be ${elementConfig.attributes[attributeKey]}`);
+          });
+        })
     });
   };
 
