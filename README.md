@@ -5,7 +5,7 @@ This package allows you to validate the UI attributes against baseline using Nig
 A baseline is a simple JSON file that will have different elements and their attributes that we you would like to validate. You can create multiple baseline files according to your need.
 
 A typical example of a baseline file
-`homepage.json`
+`sample1.json`
 ```
 [
   {
@@ -35,6 +35,26 @@ A typical example of a baseline file
       "line-height": "32px",
       "letter-spacing": "normal",
       "text-transform": "lowercase",
+    }
+  }
+]
+```
+* Version `1.0.4`, supports passing a baseline file with extension `js`.
+`sample2.js`
+```
+module.exports = [
+  {
+    "tag": "span",
+    "selector": "//div[@class='coh-inline-element navigation-section']/ul/li/span[text()='Products']",
+    "text": "Products",
+    "attributes": {
+      "font-family": "\"Open Sans\", sans-serif",
+      "font-weight": 600,
+      "color": "rgb(26, 68, 151)",
+      "font-size": "18px",
+      "line-height": "26px",
+      "letter-spacing": "normal",
+      "display": "inline-block"
     }
   }
 ]
@@ -101,15 +121,14 @@ describe('Verify the UI attributes of homepage', function() {
   it('Verify the UI attributes for 414 screen', function(browser) {
     browser
       .url('https://example.com/')
-      .validateBaseline("homepage.json")
+      .validateBaseline("sample1.json") // Or .validateBaseline("sample2.js")
       .end();
   });
 });
 ```
-**Here:** In the above example `homepage.json` is file under `baseline` folder.
+**Here:** In the above example `sample1.json` is file under `baseline` folder.
 
 ### Output
 You can choose the kind of reports you need, by using nightwatch provided reporters.[Here's](https://nightwatchjs.org/guide/overview/what-is-nightwatch.html) a for reference. 
 
 **Note:** This package works with NightwatchJS & NightwatchJS with CucumberJS integration too :)
-
