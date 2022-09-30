@@ -138,7 +138,7 @@ describe('Verify the UI attributes of homepage', function() {
   it('Verify the UI attributes for 414 screen', function(browser) {
     browser
       .url('https://example.com/')
-      .validateBaseline("sample1.json") // Or .validateBaseline("sample2.js")
+      .assert.validateBaseline("sample1.json") // Or .assert.validateBaseline("sample2.js")
       .end();
   });
 });
@@ -165,7 +165,7 @@ describe('Verify the UI attributes of homepage', function() {
   it('Verify the UI attributes for 414 screen', function(browser) {
     browser
       .url('https://example.com/')
-      .validateBaseline(elementAttributes)
+      .assert.validateBaseline(elementAttributes)
       .end();
   });
 });
@@ -209,7 +209,7 @@ describe('Verify the UI attributes of homepage', function() {
   it('Verify the UI attributes for 414 screen', function(browser) {
     browser
       .url('https://example.com/')
-      .validateBaseline(elementAttributes)
+      .assert.validateBaseline(elementAttributes)
       .end();
   });
 });
