@@ -105,6 +105,14 @@ npm install nightwatch-UI-atrributes-validator
   ]
 ```
 
+3. Add custom assertion to the configuration of `nightwatch.conf.js`. You can refer the [link](https://nightwatchjs.org/guide/configuration/)
+
+```
+  custom_assertions_path: [
+    './node_modules/nightwatch-UI-atrributes-validator/assertions'
+  ]
+```
+
 3. Lastly pass the path of the baseline folder to the configuration, under the `nightwatch.conf.js`
 ```
   globals: {
@@ -113,6 +121,15 @@ npm install nightwatch-UI-atrributes-validator
 ```
 
 ### Usage
+Types of parameters `validateBaseline` assertions accepts
+| Input types  | description                               |
+| :----------  | ----------------------------------------- |
+| file  | Can pass a `js` or `json` file path which resides under `baseline` folder|
+| array | Accepts element attributes in array format|
+| object  | Accepts element attributes in object format|
+
+##### Below are few examples:
+
 To use the above, we simply need to use the custom command `validateBaseline` and it accepts 1 parameter.
 1. `fileName` of the baseline
 
@@ -127,7 +144,76 @@ describe('Verify the UI attributes of homepage', function() {
 });
 ```
 **Here:** In the above example `sample1.json` is file under `baseline` folder.
+2. `attributes` of the element in `Object` format
+```test.js
+const elementAttributes = {
+    "tag": "p",
+    "selector": "//div[@id='block-globalannouncementarea']",
+    "text": "New! Itch Protect Wash",
+    "attributes": {
+      "font-family": "Jost",
+      "font-weight": 500,
+      "color": "rgb(255, 255, 255)",
+      "font-size": "17px",
+      "line-height": "24px",
+      "letter-spacing": "normal",
+      "text-align": "center",
+      "display": "inline-block"
+    }
+};
+describe('Verify the UI attributes of homepage', function() {
+  it('Verify the UI attributes for 414 screen', function(browser) {
+    browser
+      .url('https://example.com/')
+      .validateBaseline(elementAttributes)
+      .end();
+  });
+});
+```
+3. `attributes` of the element in an `array` format
+```test.js
+const elementAttributes = [
+    {
+        "tag": "p",
+        "selector": "//div[@id='block-globalannouncementarea']",
+        "text": "New! Itch Protect Wash",
+        "attributes": {
+          "font-family": "Jost",
+          "font-weight": 500,
+          "color": "rgb(255, 255, 255)",
+          "font-size": "17px",
+          "line-height": "24px",
+          "letter-spacing": "normal",
+          "text-align": "center",
+          "display": "inline-block"
+        }
+    },
+    {
+        "tag": "p",
+        "selector": "//div[@id='block-globalannouncementarea']",
+        "text": "New! Itch Protect Wash",
+        "attributes": {
+          "font-family": "Jost",
+          "font-weight": 500,
+          "color": "rgb(255, 255, 255)",
+          "font-size": "17px",
+          "line-height": "24px",
+          "letter-spacing": "normal",
+          "text-align": "center",
+          "display": "inline-block"
+        }
+    }
+];
 
+describe('Verify the UI attributes of homepage', function() {
+  it('Verify the UI attributes for 414 screen', function(browser) {
+    browser
+      .url('https://example.com/')
+      .validateBaseline(elementAttributes)
+      .end();
+  });
+});
+```
 ### Output
 You can choose the kind of reports you need, by using nightwatch provided reporters.[Here's](https://nightwatchjs.org/guide/overview/what-is-nightwatch.html) a for reference. 
 
