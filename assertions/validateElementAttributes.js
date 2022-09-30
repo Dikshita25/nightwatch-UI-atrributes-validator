@@ -24,7 +24,7 @@ exports.assertion = function({expected, actual}, elementId) {
 
     return {
       message,
-      args: [`'${expected.text}'`]
+      args: [`'${expected.text || expected.selector}'`]
     }
   };
 
@@ -95,7 +95,7 @@ exports.assertion = function({expected, actual}, elementId) {
 
       const lastItem = Object.keys(expected.attributes).length - 1 == index;
 
-      this.api.verify.equal(expected.attributes[attributeKey], actual.attributes[attributeKey], `Matching ${attributeKey} to be ${expected.attributes[attributeKey]} ${lastItem ? '\n' : ''}`);
+      this.api.verify.equal(actual.attributes[attributeKey], expected.attributes[attributeKey], `Matching ${attributeKey} to be ${expected.attributes[attributeKey]} ${lastItem ? '\n' : ''}`);
 
       const equals = expected.attributes[attributeKey] == actual.attributes[attributeKey];
 
